@@ -9,7 +9,6 @@ from PIL import Image
 app = Flask(__name__)
 CORS(app)
 
-
 # ----------------- LSB Steganography Class -----------------
 class LSBSteg:
     def __init__(self, image):

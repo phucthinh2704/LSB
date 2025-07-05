@@ -63,7 +63,7 @@ const LSBSteganographyApp = () => {
 			formData.append("image", selectedImage);
 			formData.append("file", selectedFile);
 
-			const response = await fetch("http://localhost:5000/lsb/encode", {
+			const response = await fetch(`${import.meta.env.VITE_API_URI}/encode`, {
 				method: "POST",
 				body: formData,
 			});
@@ -108,7 +108,7 @@ const LSBSteganographyApp = () => {
 			const formData = new FormData();
 			formData.append("image", stegoImage);
 
-			const response = await fetch("http://localhost:5000/lsb/decode", {
+			const response = await fetch(`${import.meta.env.VITE_API_URI}/decode`, {
 				method: "POST",
 				body: formData,
 			});
