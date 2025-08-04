@@ -295,7 +295,7 @@ const LSBSteganographyApp = () => {
 										!selectedFile ||
 										isProcessing
 									}
-									className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 disabled:opacity-50 disabled:cursor-not-allowed text-white py-4 px-8 rounded-lg font-semibold text-lg transition-all flex items-center justify-center mx-auto cursor-pointer">
+									className="bg-gradient-to-r from-blue-500 to-green-500 hover:from-blue-600 hover:to-green-600 disabled:opacity-50 disabled:cursor-not-allowed text-white py-4 px-8 rounded-lg font-semibold text-lg transition-all flex items-center justify-center mx-auto cursor-pointer">
 									{isProcessing ? (
 										<>
 											<div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
@@ -353,6 +353,14 @@ const LSBSteganographyApp = () => {
 								{stegoImage && (
 									<p className="mt-2 text-sm text-gray-600">
 										Đã chọn: {stegoImage.name}
+										<br />
+										Kích thước: {formatFileSize(stegoImage.size)}
+										<br />
+										{stegoImage.type.startsWith("image/")
+											? "Định dạng: " + stegoImage.type
+											: "Định dạng không hợp lệ"}
+										<br />
+										<img src={URL.createObjectURL(stegoImage)} alt="" className="mt-2 w-1/2 h-auto" />
 									</p>
 								)}
 							</div>
@@ -376,39 +384,6 @@ const LSBSteganographyApp = () => {
 									)}
 								</button>
 							</div>
-
-							{/* Decoded Data Display */}
-							{/* {decodedData && (
-								<div className="bg-purple-50 rounded-lg p-6 border border-purple-200">
-									<h3 className="text-lg font-semibold text-purple-800 mb-4">
-										Dữ liệu đã được giải mã thành công!
-									</h3>
-									<div className="space-y-3">
-										<div className="flex items-center">
-											<span className="font-medium text-gray-700 w-24">
-												Tên file:
-											</span>
-											<span className="text-gray-900 bg-white px-3 py-1 rounded border">
-												{decodedData.fileName}
-											</span>
-										</div>
-										<div className="flex items-center">
-											<span className="font-medium text-gray-700 w-24">
-												Kích thước:
-											</span>
-											<span className="text-gray-900">
-												{formatFileSize(decodedData.size)}
-											</span>
-										</div>
-										<button
-											onClick={handleDownloadDecoded}
-											className="bg-purple-500 hover:bg-purple-600 text-white py-2 px-4 rounded-lg flex items-center transition-colors">
-											<Download className="w-4 h-4 mr-2" />
-											Tải xuống file gốc
-										</button>
-									</div>
-								</div>
-							)} */}
 						</div>
 					)}
 				</div>
